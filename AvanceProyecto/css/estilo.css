@@ -1,0 +1,467 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5f6f8;
+    color: #2f3b4c;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/*encabezado*/
+#encabezado-principal {
+    background-color: #ffffff;
+    border-bottom: 1px solid #dddddd;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    padding: 15px 5%;
+}
+
+#navegacion-principal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    flex-wrap: wrap;
+}
+
+#navegacion-principal a {
+    text-decoration: none;
+    color: #2f3b4c;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+#navegacion-principal a:hover {
+    background-color: #e9eef5;
+    color: #2f6db5;
+    transform: translateY(-2px);
+}
+
+/*contenido principal*/
+main {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    flex: 1;
+}
+
+/*titulos*/
+h1 {
+    font-size: 2.2rem;
+    color: #26384d;
+    margin-bottom: 15px;
+}
+
+h2 {
+    color: #26384d;
+    margin-bottom: 15px;
+}
+
+p {
+    line-height: 1.6;
+}
+
+/*botones*/
+#btn-comenzar,
+.btn-nivel,
+.btn-jugar,
+#btn-reiniciar,
+#btn-salir,
+.btn-secundario {
+    display: inline-block;
+    text-decoration: none;
+    border: none;
+    background-color: #2f6db5;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+#btn-comenzar:hover,
+.btn-nivel:hover,
+.btn-jugar:hover,
+#btn-reiniciar:hover,
+#btn-salir:hover,
+.btn-secundario:hover {
+    background-color: #245a99;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/*footer*/
+#pie-principal {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-top: 1px solid #dddddd;
+    margin-top: auto;
+    color: #596579;
+}
+
+/*pagina principal*/
+#contenido-inicio {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+}
+
+#presentacion {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+#presentacion h1 {
+    font-size: 3rem;
+}
+
+#presentacion p {
+    margin-bottom: 20px;
+}
+
+#logo-puzzle {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+    transition: 0.3s;
+}
+
+#logo-puzzle:hover {
+    transform: scale(1.05);
+}
+
+#inicio-juego {
+    margin-top: 25px;
+}
+
+/*seleccionar nivel*/
+#seleccion-niveles {
+    text-align: center;
+}
+
+#titulo-niveles {
+    margin-bottom: 40px;
+}
+
+#lista-niveles {
+    display: grid;
+    grid-template-columns: 
+        repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+
+/*tarjetas*/
+.nivel {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+}
+
+.nivel:hover {
+    transform: translateY(-5px);  /*mueve un elemento pero sin cambiar su posicion*/
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.nivel h2 {
+    margin-bottom: 20px;
+}
+
+.nivel p {
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+#nivel-1 {
+    border-top: 5px solid #62a83d;
+}
+
+#nivel-2 {
+    border-top: 5px solid #e5a928;
+}
+
+#nivel-3 {
+    border-top: 5px solid #d9534f;
+}
+
+
+/*niveles bloqueados*/
+.bloqueado {
+    opacity: 0.75;
+}
+
+.bloqueado button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    background-color: #c7c7c7;
+    color: #666666;
+    cursor: not-allowed;
+    font-weight: bold;
+}
+
+/*seleccionar pluzzle*/
+#seleccion-puzzles {
+    text-align: center;
+}
+
+#titulo-puzzles {
+    margin-bottom: 40px;
+}
+
+#nivel-seleccionado {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #62a83d;
+}
+
+#lista-puzzles {
+    display: grid;
+    grid-template-columns: /*crea columna y reparte el espacio*/
+        repeat(3, 1fr);
+    gap: 25px;
+}
+
+
+/*pluzzle tarjetas*/
+.puzzle {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    padding-bottom: 25px;
+    transition: 0.3s;
+}
+
+.puzzle:hover {
+    transform: translateY(-5px); /*mueve un elemento pero sin cambiar su posicion*/
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.imagen-puzzle {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 5px solid #62a83d;
+}
+
+.puzzle h2 {
+    margin: 20px 0;
+}
+
+/*instrucciones*/
+#contenido-instrucciones {
+    max-width: 850px;
+    margin: 40px auto;
+}
+
+#introduccion-instrucciones {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#como-jugar,
+#movimiento-piezas,
+#niveles-juego {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border-left: 6px solid #62a83d;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+}
+
+#como-jugar:hover,
+#movimiento-piezas:hover,
+#niveles-juego:hover {
+    transform: translateX(5px); /*mueve un elemento pero sin cambiar su posicion*/
+}
+
+#como-jugar ol,
+#niveles-juego ul {
+    padding-left: 25px;
+}
+
+#como-jugar li,
+#niveles-juego li {
+    margin-bottom: 12px;
+}
+
+#volver {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/*juego*/
+#area-juego {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#informacion-juego {
+    margin-bottom: 30px;
+}
+
+#informacion-juego p {
+    margin: 8px 0;
+    font-weight: bold;
+}
+
+/*tableros*/
+#tablero-puzzle {
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 1 / 1;
+    display: grid;
+    grid-template-columns: /*crea columna y reparte el espacio*/
+        repeat(3, 1fr);
+    grid-template-rows: /*crea filas y reparte el espacio*/
+        repeat(3, 1fr);
+    gap: 4px;
+    padding: 5px;
+    background-color: #d8dee6;
+    border-radius: 8px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/*piezas*/
+.pieza {
+    background-color: #e8f0f7;
+    border: 1px solid #b7c4d0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.pieza:hover {
+    background-color: #d8e8f7;
+    transform: scale(0.96);
+}
+
+.espacio-vacio {
+    background-color: #2f6db5;
+
+    opacity: 0.7;
+}
+
+/*controles*/
+#controles-juego {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+/*responsivo para tablet*/
+@media (max-width: 900px) {
+
+    #lista-puzzles {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    #lista-niveles {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+/*responsivo para telefonos*/
+@media (max-width: 600px) {
+
+    #encabezado-principal {
+        padding: 15px;
+    }
+
+    #navegacion-principal {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    #navegacion-principal a {
+        width: 100%;
+        text-align: center;
+    }
+
+    main {
+        width: 92%;
+        margin: 25px auto;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    #presentacion {
+        padding: 25px 15px;
+    }
+
+    #presentacion h1 {
+        font-size: 2.2rem;
+    }
+
+    #lista-niveles {
+        grid-template-columns: 1fr;
+    }
+
+    #lista-puzzles {
+        grid-template-columns: 1fr;
+    }
+
+    #tablero-puzzle {
+        max-width: 330px;
+    }
+
+    #controles-juego {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #controles-juego a,
+    #controles-juego button {
+        width: 100%;
+    }
+
+    #como-jugar,
+    #movimiento-piezas,
+    #niveles-juego {
+        padding: 20px;
+    }
+}
