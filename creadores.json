@@ -1,0 +1,39 @@
+{
+  "creadores": [
+    {
+      "id": 1,
+      "nombre": "Jeniffer Lisseth Saravia Escolero",
+      "carnet": "SE220355",
+      "rol": "POR COMPLETAR",
+      "foto": ""
+    },
+    {
+      "id": 2,
+      "nombre": "David Alejandro Ramírez Montalvo",
+      "carnet": "RM241612",
+      "rol": "POR COMPLETAR",
+      "foto": ""
+    },
+    {
+      "id": 3,
+      "nombre": "Gabriela Melissa Escobar Valle",
+      "carnet": "EV240176",
+      "rol": "POR COMPLETAR",
+      "foto": ""
+    },
+    {
+      "id": 4,
+      "nombre": "Justin Manuel Escobar Pérez",
+      "carnet": "EP230479",
+      "rol": "POR COMPLETAR",
+      "foto": ""
+    },
+    {
+      "id": 5,
+      "nombre": "Alexander Antonio De Paz Vasquez",
+      "carnet": "DV231427",
+      "rol": "POR COMPLETAR",
+      "foto": ""
+    }
+  ]
+}

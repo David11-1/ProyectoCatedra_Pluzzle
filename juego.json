@@ -1,0 +1,97 @@
+{
+  "niveles": [
+    {
+      "id": 1,
+      "tamano": 3,
+      "puzzles": [
+        {
+          "id": 1,
+          "nombre": "Puzzle 1",
+          "semilla": "nivel1-puzzle1"
+        },
+        {
+          "id": 2,
+          "nombre": "Puzzle 2",
+          "semilla": "nivel1-puzzle2"
+        },
+        {
+          "id": 3,
+          "nombre": "Puzzle 3",
+          "semilla": "nivel1-puzzle3"
+        },
+        {
+          "id": 4,
+          "nombre": "Puzzle 4",
+          "semilla": "nivel1-puzzle4"
+        },
+        {
+          "id": 5,
+          "nombre": "Puzzle 5",
+          "semilla": "nivel1-puzzle5"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "tamano": 4,
+      "puzzles": [
+        {
+          "id": 1,
+          "nombre": "Puzzle 1",
+          "semilla": "nivel2-puzzle1"
+        },
+        {
+          "id": 2,
+          "nombre": "Puzzle 2",
+          "semilla": "nivel2-puzzle2"
+        },
+        {
+          "id": 3,
+          "nombre": "Puzzle 3",
+          "semilla": "nivel2-puzzle3"
+        },
+        {
+          "id": 4,
+          "nombre": "Puzzle 4",
+          "semilla": "nivel2-puzzle4"
+        },
+        {
+          "id": 5,
+          "nombre": "Puzzle 5",
+          "semilla": "nivel2-puzzle5"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "tamano": 5,
+      "puzzles": [
+        {
+          "id": 1,
+          "nombre": "Puzzle 1",
+          "semilla": "nivel3-puzzle1"
+        },
+        {
+          "id": 2,
+          "nombre": "Puzzle 2",
+          "semilla": "nivel3-puzzle2"
+        },
+        {
+          "id": 3,
+          "nombre": "Puzzle 3",
+          "semilla": "nivel3-puzzle3"
+        },
+        {
+          "id": 4,
+          "nombre": "Puzzle 4",
+          "semilla": "nivel3-puzzle4"
+        },
+        {
+          "id": 5,
+          "nombre": "Puzzle 5",
+          "semilla": "nivel3-puzzle5"
+        }
+      ]
+    }
+  ]
+}
