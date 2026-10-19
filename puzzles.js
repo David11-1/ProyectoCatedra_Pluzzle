@@ -25,7 +25,7 @@ const btnSalir = document.getElementById("btn-salir");
  
 // datos del juego
 const dimension = nivel + 2; // nivel 1 = 3x3, nivel 2 = 4x4, nivel 3 = 5x5
-const rutaImagen = `img/puzzle-${puzzle}.jpg`;
+const rutaImagen = `img/nivel-${nivel}/puzzle-${puzzle}.jpg`;
 let usarImagen = false;
 let movimientos = 0;
 let juegoTerminado = false;
@@ -114,14 +114,17 @@ function mostrarPuzzles() {
     for (let p = 1; p <= PUZZLES_POR_NIVEL; p++) {
         const tarjeta = document.getElementById("puzzle-" + p);
         const enlace = tarjeta.querySelector(".btn-jugar");
- 
+
         enlace.href = `juego.html?nivel=${nivel}&puzzle=${p}`;
+
+        // la foto de la tarjeta tambien depende del nivel
+        const vistaPrevia = tarjeta.querySelector(".imagen-puzzle");
+        if (vistaPrevia) vistaPrevia.src = `img/nivel-${nivel}/puzzle-${p}.jpg`;
  
         if (estaCompletado(nivel, p)) {
             const marca = document.createElement("p");
             marca.textContent = "✔ Completado";
             marca.className = "marca-completado";
-            marca.style.cssText = "color:#62a83d;font-weight:bold;margin-bottom:12px;";
             tarjeta.insertBefore(marca, enlace);
         }
     }

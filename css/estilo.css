@@ -70,11 +70,11 @@ p {
 
 /*botones*/
 #btn-comenzar,
+.btn-principal,
 .btn-nivel,
 .btn-jugar,
 #btn-reiniciar,
-#btn-salir,
-.btn-secundario {
+#btn-salir {
     display: inline-block;
     text-decoration: none;
     border: none;
@@ -89,14 +89,48 @@ p {
 }
 
 #btn-comenzar:hover,
+.btn-principal:hover,
 .btn-nivel:hover,
 .btn-jugar:hover,
 #btn-reiniciar:hover,
-#btn-salir:hover,
-.btn-secundario:hover {
+#btn-salir:hover {
     background-color: #245a99;
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/*boton secundario: fondo blanco con borde azul*/
+.btn-secundario {
+    display: inline-block;
+    text-decoration: none;
+    border: 2px solid #2f6db5;
+    background-color: #ffffff;
+    color: #2f6db5;
+    padding: 10px 26px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-secundario:hover {
+    background-color: #2f6db5;
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(47, 109, 181, 0.35);
+}
+
+/*foco visible para navegacion con teclado*/
+#navegacion-principal a:focus-visible,
+#btn-comenzar:focus-visible,
+.btn-principal:focus-visible,
+.btn-nivel:focus-visible,
+.btn-jugar:focus-visible,
+.btn-secundario:focus-visible,
+#btn-reiniciar:focus-visible,
+#btn-salir:focus-visible {
+    outline: 3px solid #f2b544;
+    outline-offset: 2px;
 }
 
 /*footer*/
@@ -264,114 +298,68 @@ p {
 }
 
 .imagen-puzzle {
+    display: block;
     width: 100%;
     height: 180px;
     object-fit: cover;
     border-bottom: 5px solid #62a83d;
+    /*mientras carga la imagen se ve un fondo en vez de un hueco blanco*/
+    background-color: #eef3f8;
+    transition: 0.3s;
+}
+
+.imagen-puzzle:hover,
+.puzzle:hover .imagen-puzzle {
+    transform: scale(1.04); /*solo crece la foto, la tarjeta no se mueve*/
 }
 
 .puzzle h2 {
     margin: 20px 0;
 }
 
-/* instrucciones */
+/*instrucciones*/
 #contenido-instrucciones {
-    max-width: 1100px;
+    max-width: 850px;
     margin: 40px auto;
 }
 
 #introduccion-instrucciones {
     text-align: center;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
 
-#introduccion-instrucciones p {
-    max-width: 700px;
-    margin: auto;
-}
-
-/* tarjetas de instrucciones */
-#tarjetas-instrucciones {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 25px;
-    margin-bottom: 40px;
-}
-
-.tarjeta-instruccion {
+#como-jugar,
+#movimiento-piezas,
+#niveles-juego {
     background-color: white;
     padding: 25px;
+    margin-bottom: 20px;
     border-radius: 8px;
-    border: 1px solid #e0e0e0;
-    border-top: 5px solid #62a83d;
+    border-left: 6px solid #62a83d;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     transition: 0.3s;
 }
 
-.tarjeta-instruccion:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+#como-jugar:hover,
+#movimiento-piezas:hover,
+#niveles-juego:hover {
+    transform: translateX(5px); /*mueve un elemento pero sin cambiar su posicion*/
 }
 
-.icono-instruccion {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 15px;
+#como-jugar ol,
+#niveles-juego ul {
+    padding-left: 25px;
 }
 
-.tarjeta-instruccion h2 {
-    font-size: 1.2rem;
-    text-align: center;
-}
-
-.tarjeta-instruccion p {
-    line-height: 1.7;
-}
-
-/* tarjetas de niveles en instrucciones */
-#niveles-juego {
-    margin-bottom: 30px;
-}
-
-#niveles-juego > h2 {
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-#tarjetas-niveles-instrucciones {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
-}
-
-.tarjeta-nivel-instruccion {
-    text-align: center;
-    background-color: white;
-    padding: 25px 15px;
-    border-radius: 8px;
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-}
-
-.tarjeta-nivel-instruccion h3 {
-    color: #2f6db5;
+#como-jugar li,
+#niveles-juego li {
     margin-bottom: 12px;
 }
 
-.tarjeta-nivel-instruccion p {
-    margin-bottom: 10px;
-}
-
-.tarjeta-nivel-instruccion span {
-    color: #62a83d;
-    font-weight: bold;
-}
-
-.nota-instrucciones {
+#volver {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 30px;
 }
-
 
 /*juego*/
 #area-juego {
@@ -410,7 +398,9 @@ p {
 /*piezas*/
 .pieza {
     background-color: #e8f0f7;
+    background-repeat: no-repeat;
     border: 1px solid #b7c4d0;
+    border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -418,6 +408,8 @@ p {
     font-weight: bold;
     cursor: pointer;
     transition: 0.2s;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .pieza:hover {
@@ -440,114 +432,193 @@ p {
     margin-top: 30px;
 }
 
-/* pagina de creadores */
-#presentacion-creadores {
+/*tablero resuelto*/
+#tablero-puzzle.resuelto {
+    box-shadow: 0 0 0 4px rgba(98, 168, 61, 0.65),
+        0 6px 15px rgba(0, 0, 0, 0.15);
+    animation: tablero-ganado 0.6s ease-in-out;
+}
+
+@keyframes tablero-ganado {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.03);
+    }
+}
+
+/*marca de puzzle completado en la lista*/
+.marca-completado {
+    display: inline-block;
+    background-color: #eaf6e3;
+    color: #4d8b2f;
+    font-weight: bold;
+    font-size: 0.95rem;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 15px;
+}
+
+/*felicitacion*/
+#contenido-felicitaciones {
     text-align: center;
-    margin-bottom: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
 }
 
-#presentacion-creadores p {
-    max-width: 700px;
-    margin: auto;
+#mensaje-final {
+    background-color: #ffffff;
+    border-top: 6px solid #62a83d;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 45px 40px;
+    width: 100%;
+    max-width: 620px;
 }
 
-#lista-creadores {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 25px;
-    margin: 30px 0;
-}
-
-.tarjeta-creador {
-    background-color: white;
-    padding: 25px 20px;
-    text-align: center;
-    border: 1px solid #e0e0e0;
-    border-top: 5px solid #2f6db5;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    transition: 0.3s;
-}
-
-.tarjeta-creador:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
-}
-
-.icono-creador {
-    width: 75px;
-    height: 75px;
-    margin: 0 auto 18px;
+#icono-victoria {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 25px;
     border-radius: 50%;
+    background-color: #62a83d;
+    box-shadow: 0 6px 15px rgba(98, 168, 61, 0.45);
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #e9eef5;
-    font-size: 2.3rem;
+    animation: aparecer-victoria 0.5s ease-out;
 }
 
-.tarjeta-creador h2 {
+#icono-victoria::after {
+    content: "✔";
+    color: #ffffff;
+    font-size: 46px;
+    font-weight: bold;
+}
+
+@keyframes aparecer-victoria {
+    from {
+        transform: scale(0.4);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#mensaje-final h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+#mensaje-completado {
+    color: #62a83d;
+    font-weight: bold;
     font-size: 1.2rem;
     margin-bottom: 10px;
 }
 
-.nombre-creador {
-    font-weight: bold;
-    overflow-wrap: anywhere;
-}
-
-/* pagina de felicitacion */
-#contenido-felicitaciones {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#mensaje-final {
-    width: 100%;
-    max-width: 750px;
-    padding: 40px 30px;
-    text-align: center;
-    background-color: white;
-    border-radius: 10px;
-    border-top: 6px solid #62a83d;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-#icono-victoria {
-    font-size: 4.5rem;
-    margin-bottom: 20px;
-}
-
 #mensaje-final p {
-    margin-bottom: 15px;
+    color: #596579;
+    margin-bottom: 10px;
 }
 
 #acciones-finales {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 25px;
+    gap: 16px;
+    margin-top: 30px;
 }
 
-.btn-principal {
-    display: inline-block;
-    padding: 12px 28px;
-    border-radius: 5px;
-    background-color: #62a83d;
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+/*creadores*/
+#contenido-creadores {
+    text-align: center;
+}
+
+#titulo-creadores {
+    margin-bottom: 40px;
+}
+
+#lista-creadores {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.creador {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     transition: 0.3s;
 }
 
-.btn-principal:hover {
-    background-color: #4c862e;
-    transform: translateY(-3px);
+.creador:hover {
+    transform: translateY(-5px); /*mueve un elemento pero sin cambiar su posicion*/
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
 }
 
+.avatar-creador {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    border: 4px solid #e9eef5;
+    background-color: #2f6db5;
+    color: #ffffff;
+    font-size: 2.4rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.creador h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.creador .cargo {
+    color: #2f6db5;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.creador .carnet {
+    color: #596579;
+    font-size: 0.95rem;
+}
+
+/*responsivo para tablet*/
+@media (max-width: 900px) {
+
+    #lista-puzzles {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    #lista-niveles {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
 
 /*responsivo para telefonos*/
 @media (max-width: 600px) {
@@ -611,45 +682,207 @@ p {
         padding: 20px;
     }
 
-    #tarjetas-instrucciones,
-    #tarjetas-niveles-instrucciones,
-    #lista-creadores {
-    grid-template-columns: 1fr;
+    #mensaje-final {
+        padding: 30px 20px;
     }
 
-    #mensaje-final {
-    padding: 25px 18px;
+    #mensaje-final h1 {
+        font-size: 1.6rem;
+    }
+
+    #icono-victoria {
+        width: 75px;
+        height: 75px;
+    }
+
+    #icono-victoria::after {
+        font-size: 38px;
     }
 
     #acciones-finales {
-    flex-direction: column;
+        flex-direction: column;
+        gap: 12px;
     }
 
     #acciones-finales a {
-    text-align: center;
+        width: 100%;
+    }
+
+    #titulo-creadores {
+        margin-bottom: 25px;
     }
 }
 
-/*responsivo para tablet*/
+/*si el usuario pide menos movimiento, se desactivan las animaciones*/
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* =========================================================================
+   Reglas nuevas de David (traidas de su version de main, de99ca4).
+   Son para el HTML que el va a subir; no chocan con lo de arriba.
+   ========================================================================= */
+
+/* tarjetas de instrucciones */
+#tarjetas-instrucciones {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.tarjeta-instruccion {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    border-top: 5px solid #62a83d;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+}
+
+.tarjeta-instruccion:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.icono-instruccion {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.tarjeta-instruccion h2 {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.tarjeta-instruccion p {
+    line-height: 1.7;
+}
+
+/* tarjetas de niveles dentro de instrucciones */
+#tarjetas-niveles-instrucciones {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.tarjeta-nivel-instruccion {
+    text-align: center;
+    background-color: white;
+    padding: 25px 15px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.tarjeta-nivel-instruccion h3 {
+    color: #2f6db5;
+    margin-bottom: 12px;
+}
+
+.tarjeta-nivel-instruccion p {
+    margin-bottom: 10px;
+}
+
+.tarjeta-nivel-instruccion span {
+    color: #62a83d;
+    font-weight: bold;
+}
+
+.nota-instrucciones {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#introduccion-instrucciones p {
+    max-width: 700px;
+    margin: auto;
+}
+
+/* version de David de la pagina de creadores */
+#presentacion-creadores {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+#presentacion-creadores p {
+    max-width: 700px;
+    margin: auto;
+}
+
+.tarjeta-creador {
+    background-color: white;
+    padding: 25px 20px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    border-top: 5px solid #2f6db5;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+}
+
+.tarjeta-creador:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.icono-creador {
+    width: 75px;
+    height: 75px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e9eef5;
+    font-size: 2.3rem;
+}
+
+.tarjeta-creador h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.nombre-creador {
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+/*responsivo de las tarjetas nuevas*/
 @media (max-width: 900px) {
 
-    #lista-puzzles {
-        grid-template-columns:
-            repeat(2, 1fr);
+    #tarjetas-instrucciones,
+    #tarjetas-niveles-instrucciones {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+}
 
-    #lista-niveles {
-        grid-template-columns:
-            repeat(3, 1fr);
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
+@media (max-width: 600px) {
 
     #tarjetas-instrucciones,
-    #tarjetas-niveles-instrucciones,
+    #tarjetas-niveles-instrucciones {
+        grid-template-columns: 1fr;
+    }
+}
+
+/*la lista de creadores: 4 tarjetas en pantallas grandes y 1 sola en moviles*/
+@media (min-width: 1100px) {
+
     #lista-creadores {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        max-width: 1120px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    #lista-creadores {
+        grid-template-columns: 1fr;
     }
 }
