@@ -274,49 +274,104 @@ p {
     margin: 20px 0;
 }
 
-/*instrucciones*/
+/* instrucciones */
 #contenido-instrucciones {
-    max-width: 850px;
+    max-width: 1100px;
     margin: 40px auto;
 }
 
 #introduccion-instrucciones {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
 }
 
-#como-jugar,
-#movimiento-piezas,
-#niveles-juego {
+#introduccion-instrucciones p {
+    max-width: 700px;
+    margin: auto;
+}
+
+/* tarjetas de instrucciones */
+#tarjetas-instrucciones {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.tarjeta-instruccion {
     background-color: white;
     padding: 25px;
-    margin-bottom: 20px;
     border-radius: 8px;
-    border-left: 6px solid #62a83d;
+    border: 1px solid #e0e0e0;
+    border-top: 5px solid #62a83d;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     transition: 0.3s;
 }
 
-#como-jugar:hover,
-#movimiento-piezas:hover,
-#niveles-juego:hover {
-    transform: translateX(5px); /*mueve un elemento pero sin cambiar su posicion*/
+.tarjeta-instruccion:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
 }
 
-#como-jugar ol,
-#niveles-juego ul {
-    padding-left: 25px;
+.icono-instruccion {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
-#como-jugar li,
-#niveles-juego li {
+.tarjeta-instruccion h2 {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.tarjeta-instruccion p {
+    line-height: 1.7;
+}
+
+/* tarjetas de niveles en instrucciones */
+#niveles-juego {
+    margin-bottom: 30px;
+}
+
+#niveles-juego > h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+#tarjetas-niveles-instrucciones {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.tarjeta-nivel-instruccion {
+    text-align: center;
+    background-color: white;
+    padding: 25px 15px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.tarjeta-nivel-instruccion h3 {
+    color: #2f6db5;
     margin-bottom: 12px;
 }
 
-#volver {
-    text-align: center;
-    margin-top: 30px;
+.tarjeta-nivel-instruccion p {
+    margin-bottom: 10px;
 }
+
+.tarjeta-nivel-instruccion span {
+    color: #62a83d;
+    font-weight: bold;
+}
+
+.nota-instrucciones {
+    text-align: center;
+    margin-top: 20px;
+}
+
 
 /*juego*/
 #area-juego {
@@ -385,23 +440,114 @@ p {
     margin-top: 30px;
 }
 
-/*responsivo para tablet*/
-@media (max-width: 900px) {
-
-    #lista-puzzles {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    #lista-niveles {
-        grid-template-columns:
-            repeat(3, 1fr);
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
+/* pagina de creadores */
+#presentacion-creadores {
+    text-align: center;
+    margin-bottom: 35px;
 }
+
+#presentacion-creadores p {
+    max-width: 700px;
+    margin: auto;
+}
+
+#lista-creadores {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.tarjeta-creador {
+    background-color: white;
+    padding: 25px 20px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    border-top: 5px solid #2f6db5;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+}
+
+.tarjeta-creador:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.icono-creador {
+    width: 75px;
+    height: 75px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e9eef5;
+    font-size: 2.3rem;
+}
+
+.tarjeta-creador h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.nombre-creador {
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+/* pagina de felicitacion */
+#contenido-felicitaciones {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#mensaje-final {
+    width: 100%;
+    max-width: 750px;
+    padding: 40px 30px;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    border-top: 6px solid #62a83d;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#icono-victoria {
+    font-size: 4.5rem;
+    margin-bottom: 20px;
+}
+
+#mensaje-final p {
+    margin-bottom: 15px;
+}
+
+#acciones-finales {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn-principal {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 5px;
+    background-color: #62a83d;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    transition: 0.3s;
+}
+
+.btn-principal:hover {
+    background-color: #4c862e;
+    transform: translateY(-3px);
+}
+
 
 /*responsivo para telefonos*/
 @media (max-width: 600px) {
@@ -463,5 +609,47 @@ p {
     #movimiento-piezas,
     #niveles-juego {
         padding: 20px;
+    }
+
+    #tarjetas-instrucciones,
+    #tarjetas-niveles-instrucciones,
+    #lista-creadores {
+    grid-template-columns: 1fr;
+    }
+
+    #mensaje-final {
+    padding: 25px 18px;
+    }
+
+    #acciones-finales {
+    flex-direction: column;
+    }
+
+    #acciones-finales a {
+    text-align: center;
+    }
+}
+
+/*responsivo para tablet*/
+@media (max-width: 900px) {
+
+    #lista-puzzles {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    #lista-niveles {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    #tarjetas-instrucciones,
+    #tarjetas-niveles-instrucciones,
+    #lista-creadores {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
