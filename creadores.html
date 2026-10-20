@@ -92,12 +92,12 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script src="js/api.js"></script>
     <script>
-        // Repositorio del proyecto (confirmar que coincide con la URL de GitHub)
+        
         const REPO = "David11-1/ProyectoCatedra_Pluzzle";
 
         Vue.createApp({
             data() {
-                // Plan B: si el JSON no carga, se muestran estos datos y la página se ve igual
+                
                 return {
                     creadores: [
                         { id: 1, nombre: "Alexander De Paz", carnet: "DV231427", rol: "Programación" },
@@ -110,13 +110,13 @@
                 };
             },
             async mounted() {
-                // 1) datos del equipo desde el JSON
+                
                 try {
                     this.creadores = await cargarCreadores();
                 } catch (e) {
                     console.warn("Se usan los datos de respaldo de creadores", e);
                 }
-                // 2) API REST de GitHub (si falla, simplemente no se muestra)
+                
                 try {
                     const r = await fetch("https://api.github.com/repos/" + REPO + "/contributors");
                     if (r.ok) this.colaboradores = await r.json();
