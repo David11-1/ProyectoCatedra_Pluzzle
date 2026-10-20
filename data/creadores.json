@@ -1,0 +1,32 @@
+{
+  "creadores": [
+    {
+      "id": 1,
+      "nombre": "Alexander De Paz",
+      "carnet": "DV231427",
+      "rol": "Programación",
+      "foto": ""
+    },
+    {
+      "id": 2,
+      "nombre": "David Montalvo",
+      "carnet": "RM241612",
+      "rol": "Programación / Diseño web",
+      "foto": ""
+    },
+    {
+      "id": 3,
+      "nombre": "Jeniffer Saravia",
+      "carnet": "SE220355",
+      "rol": "Diseño Web",
+      "foto": ""
+    },
+    {
+      "id": 4,
+      "nombre": "Justin Escobar",
+      "carnet": "EP230479",
+      "rol": "Programación",
+      "foto": ""
+    }
+  ]
+}
