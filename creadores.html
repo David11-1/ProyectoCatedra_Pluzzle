@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creadores - Puzzle Master</title>
     <link rel="stylesheet" href="css/estilo.css">
+    <style>
+        [v-cloak] { display: none; }
+        #colaboradores-github { margin-top: 40px; text-align: center; }
+        .lista-colaboradores { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 15px; }
+        .lista-colaboradores li { background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 18px; display: flex; align-items: center; gap: 10px; }
+        .lista-colaboradores img { border-radius: 50%; }
+    </style>
 </head>
 
 <body>
@@ -21,7 +28,7 @@
     </header>
 
 
-    <main id="contenido-creadores">
+    <main id="contenido-creadores" v-cloak>
 
         <section id="titulo-creadores">
 
@@ -33,67 +40,35 @@
 
         </section>
 
+        <p v-if="error">{{ error }}</p>
 
         <section id="lista-creadores">
 
-            <article class="creador">
+            <article class="creador" v-for="c in creadores" :key="c.id">
 
                 <div class="avatar-creador" aria-hidden="true">
-                    A
+                    {{ c.nombre.charAt(0) }}
                 </div>
 
-                <h2>Alexander De Paz</h2>
+                <h2>{{ c.nombre }}</h2>
 
-                <p class="cargo">Programación</p>
+                <p class="cargo">{{ c.rol }}</p>
 
-                <p class="carnet">Carnet: DV231427</p>
+                <p class="carnet">Carnet: {{ c.carnet }}</p>
 
             </article>
 
-            <article class="creador">
+        </section>
 
-                <div class="avatar-creador" aria-hidden="true">
-                    D
-                </div>
-
-                <h2>David Montalvo</h2>
-
-                <p class="cargo">Programación /Diseño web</p>
-
-                <p class="carnet">Carnet: RM241612</p>
-
-            </article>
-
-            
-            <article class="creador">
-
-                <div class="avatar-creador" aria-hidden="true">
-                    J
-                </div>
-
-                <h2>Jeniffer Saravia</h2>
-
-                <p class="cargo">Diseño Web</p>
-
-                <p class="carnet">Carnet: SE220355</p>
-
-            </article>
-
-            <article class="creador">
-
-                <div class="avatar-creador" aria-hidden="true">
-                    J
-                </div>
-
-                <h2>Justin Escobar</h2>
-
-                <p class="cargo">Programación</p>
-
-                <p class="carnet">Carnet: EP230479</p>
-
-            </article>
-
-            
+        <section id="colaboradores-github" v-if="colaboradores.length">
+            <h2>Actividad en GitHub</h2>
+            <p>Datos obtenidos en vivo desde la API REST de GitHub.</p>
+            <ul class="lista-colaboradores">
+                <li v-for="u in colaboradores" :key="u.id">
+                    <img :src="u.avatar_url" :alt="'Avatar de ' + u.login" width="48" height="48">
+                    <span><a :href="u.html_url" target="_blank" rel="noopener">{{ u.login }}</a> · {{ u.contributions }} commits</span>
+                </li>
+            </ul>
         </section>
 
 
@@ -113,6 +88,44 @@
         <p>&copy; 2026 Puzzle Master</p>
 
     </footer>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script src="js/api.js"></script>
+    <script>
+        // Repositorio del proyecto (confirmar que coincide con la URL de GitHub)
+        const REPO = "David11-1/ProyectoCatedra_Pluzzle";
+
+        Vue.createApp({
+            data() {
+                // Plan B: si el JSON no carga, se muestran estos datos y la página se ve igual
+                return {
+                    creadores: [
+                        { id: 1, nombre: "Alexander De Paz", carnet: "DV231427", rol: "Programación" },
+                        { id: 2, nombre: "David Montalvo", carnet: "RM241612", rol: "Programación / Diseño web" },
+                        { id: 3, nombre: "Jeniffer Saravia", carnet: "SE220355", rol: "Diseño Web" },
+                        { id: 4, nombre: "Justin Escobar", carnet: "EP230479", rol: "Programación" }
+                    ],
+                    colaboradores: [],
+                    error: ""
+                };
+            },
+            async mounted() {
+                // 1) datos del equipo desde el JSON
+                try {
+                    this.creadores = await cargarCreadores();
+                } catch (e) {
+                    console.warn("Se usan los datos de respaldo de creadores", e);
+                }
+                // 2) API REST de GitHub (si falla, simplemente no se muestra)
+                try {
+                    const r = await fetch("https://api.github.com/repos/" + REPO + "/contributors");
+                    if (r.ok) this.colaboradores = await r.json();
+                } catch (e) {
+                    console.warn("No se pudo consultar la API de GitHub", e);
+                }
+            }
+        }).mount("#contenido-creadores");
+    </script>
 
 </body>
 
